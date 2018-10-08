@@ -5,13 +5,13 @@ let router = express.Router();
 router.findAll = (req, res) => {
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(donations,null,5));
+    res.send(JSON.stringify(operators,null,5));
 }
 
 router.findOne = (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
-    var operator = getByValue(operators, req.params.name)
+    var operator = getByValue(operators, req.params.name);
 
     if (operator != null)
         res.send(JSON.stringify(operator, null, 5));
@@ -21,11 +21,7 @@ router.findOne = (req, res) => {
 
 router.addOperator = (req, res) => {
     var id = Math.floor((Math.random() * 1000000) + 1); //Randomly generate an id
-    // parameters to store
-    // id (for id)
-    // req.body.paymenttype (for paymenttype)
-    // req.body.amount (for amount)
-    // 0 (for upvotes)
+
     var currentSize = operators.length;
 
     operators.push({id: id, name: req.body.name, side: req.body.side, force: req.body.force, gadget: req.body.gadget, upvotes: 0});
@@ -51,9 +47,9 @@ router.incrementUpvotes = (req, res) => {
 router.deleteOperator =(req,res)=> {
 
     var operator = getByValue(operators, req.params.name);
-    var index = operators.indexOf(operator)
+    var index = operators.indexOf(operator);
 
-    var currentSize = operators.length
+    var currentSize = operators.length;
     if (operator != null) {
         if ((currentSize - 1) == operators.length)
             res.json({message: 'Operator Deleted'});
@@ -65,9 +61,9 @@ router.deleteOperator =(req,res)=> {
         res.send('Operator Not Found');
 }
 
-function getByValue(array, id) {
-    var result  = array.filter(function(obj){return obj.id == id;} );
+function getByValue(array, name) {
+    var result  = array.filter(function(obj){return obj.name == name;} );
     return result ? result[0] : null; // or undefined
 }
 
-module.exports = router
+module.exports = router;
