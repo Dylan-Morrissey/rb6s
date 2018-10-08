@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const operators = require("./routes/operators");
 
 var app = express();
 
@@ -21,6 +22,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.get('/operators', operators.findAll);
+app.get('/operators/:name', operators.findOne);
+
+app.post('/operators', operators.addOperator);
+
+app.put('/operators/:name/vote', operators.incrementUpvotes);
+
+app.delete('/operators:/name', operators.deleteOperator);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
