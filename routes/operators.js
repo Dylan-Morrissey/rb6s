@@ -1,66 +1,92 @@
 let operators = require('../models/operators');
 let express = require('express');
 let router = express.Router();
+let mongoose = require('mongoose');
+var Operator = require('../models/operators');
+
+
+mongoose.connect('mongodb://localhost:27017/rainbowsixdb', { useNewUrlParser: true});
+
+let db = mongoose.connection;
+
+db.on('error', function (err) {
+    console.log('Unable to Connect to [ ' + db.name + ' ]', err);
+});
+
+db.once('open', function () {
+    console.log('Successfully Connected to [ ' + db.name + ' ]');
+});
 
 router.findAll = (req, res) => {
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(operators,null,5));
+
+    Operator.find(function (err, operators) {
+        if (err)
+            res.send(err);
+
+        res.send(JSON.stringify(operators,null,5));
+    });
+
 }
 
 router.findOne = (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
-    var operator = getByValue(operators, req.params.name);
 
-    if (operator != null)
-        res.send(JSON.stringify(operator, null, 5));
-    else
-        res.send('Operator Not Found');
+    Operator.find({"_id": req.params.id},function(err,operator){
+        if (err)
+            res.send({ message: 'Operator Not Found'});
+        else
+            res.json(operator);
+    });
 }
 
+
 router.addOperator = (req, res) => {
-    var id = Math.floor((Math.random() * 1000000) + 1); //Randomly generate an id
 
-    var currentSize = operators.length;
+    res.setHeader('Content-Type', 'application/json');
 
-    operators.push({id: id, name: req.body.name, side: req.body.side, force: req.body.force, gadget: req.body.gadget, upvotes: 0});
+    var operator = new Operator();
 
-    if((currentSize + 1) == operators.length)
-        res.json({message: 'Operator Added!'});
-    else
-        res.json({ message: 'Operator NOT Added!'});
+    operator.name = req.body.name;
+    operator.side = req.body.side;
+    operator.force = req.body.force;
+    operator.gadet = req.body.gadget;
+
+    operator.save(function (err) {
+        if (err)
+            res.send(err);
+        else
+            res.json({message: 'Operator Added!'});
+    });
 }
 
 router.incrementUpvotes = (req, res) => {
-    // Find the relevant donation based on params id passed in
-    // Add 1 to upvotes property of the selected donation based on its id
-    var operator = getByValue(operators,req.params.name);
 
-    if (operator!=null) {
-        operator.upvotes += 1;
-        res.json({status: 200, message: 'Up Vote Successful', operator: operator});
-    } else
-        res.send('Operator Not found -up vote not successful');
+    Operator.findById(req.params.id, function(err,operator) {
+        if (err)
+            res.json({ message: 'Operator NOT Found!', errmsg : err });
+        else {
+            operator.upvotes += 1;
+            operator.save(function (err) {
+                if (err)
+                    res.json(err);
+                else
+                    res.json('Vote incremented');
+            });
+        }
+    });
 }
 
 router.deleteOperator =(req,res)=> {
 
-    var operator = getByValue(operators, req.params.name);
-    var index = operators.indexOf(operator);
-
-    var currentSize = operators.length;
-    operators.splice(index, 1);
-
-    if (operator != null) {
-        if ((currentSize - 1) == operators.length)
-            res.json({message: 'Operator Deleted'});
+    Operator.findByIdAndRemove(req.params.id, function(err) {
+        if (err)
+            res.send(err);
         else
-            res.json({message: 'Operator not deleted'});
-            res.send(JSON.stringify(operator, null, 5));
-    }
-    else
-        res.send('Operator Not Found');
+            res.send('Operator Deleted');
+    });
 }
 
 function getByValue(array, name) {
