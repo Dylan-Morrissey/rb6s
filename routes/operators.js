@@ -27,7 +27,7 @@ router.addOperator = (req, res) => {
     operators.push({id: id, name: req.body.name, side: req.body.side, force: req.body.force, gadget: req.body.gadget, upvotes: 0});
 
     if((currentSize + 1) == operators.length)
-        res.json({ message: 'Operator Added!'});
+        res.json({message: 'Operator Added!'});
     else
         res.json({ message: 'Operator NOT Added!'});
 }
@@ -38,7 +38,7 @@ router.incrementUpvotes = (req, res) => {
     var operator = getByValue(operators,req.params.name);
 
     if (operator!=null) {
-        operators.upvotes += 1;
+        operator.upvotes += 1;
         res.json({status: 200, message: 'Up Vote Successful', operator: operator});
     } else
         res.send('Operator Not found -up vote not successful');
@@ -50,12 +50,14 @@ router.deleteOperator =(req,res)=> {
     var index = operators.indexOf(operator);
 
     var currentSize = operators.length;
+    operators.splice(index, 1);
+
     if (operator != null) {
         if ((currentSize - 1) == operators.length)
             res.json({message: 'Operator Deleted'});
         else
             res.json({message: 'Operator not deleted'});
-        res.send(JSON.stringify(operator, null, 5));
+            res.send(JSON.stringify(operator, null, 5));
     }
     else
         res.send('Operator Not Found');

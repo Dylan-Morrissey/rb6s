@@ -29,7 +29,7 @@ app.post('/operators', operators.addOperator);
 
 app.put('/operators/:name/vote', operators.incrementUpvotes);
 
-app.delete('/operators:/name', operators.deleteOperator);
+app.delete('/operators/:name', operators.deleteOperator);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
