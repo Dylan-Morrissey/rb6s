@@ -22,14 +22,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 app.get('/operators', operators.findAll);
-app.get('/operators/:name', operators.findOne);
+app.get('/operators/:id', operators.findOne);
 
 app.post('/operators', operators.addOperator);
 
-app.put('/operators/:name/vote', operators.incrementUpvotes);
+app.put('/operators/:id/vote', operators.incrementUpvotes);
 
-app.delete('/operators/:name', operators.deleteOperator);
+app.delete('/operators/:id', operators.deleteOperator);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

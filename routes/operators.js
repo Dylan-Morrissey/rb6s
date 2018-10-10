@@ -3,9 +3,10 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 var Operator = require('../models/operators');
+var mongodbUri ='mongodb://dylan:dylan123@ds125693.mlab.com:25693/rainbowsixdb';
 
 
-mongoose.connect('mongodb://localhost:27017/rainbowsixdb', { useNewUrlParser: true});
+mongoose.connect(mongodbUri, { useNewUrlParser: true});
 
 let db = mongoose.connection;
 
@@ -52,7 +53,7 @@ router.addOperator = (req, res) => {
     operator.name = req.body.name;
     operator.side = req.body.side;
     operator.force = req.body.force;
-    operator.gadet = req.body.gadget;
+    operator.gadget = req.body.gadget;
 
     operator.save(function (err) {
         if (err)
