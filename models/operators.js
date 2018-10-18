@@ -5,7 +5,7 @@ let RainbowSixSchema = new mongoose.Schema({
         side: String,
         force: String,
         gadget:String,
-        upvotes: {type: Number, default: 0}
+        likes: {type: Number, default: 0}
     },
     { collection: 'rainbowsixdb' });
 

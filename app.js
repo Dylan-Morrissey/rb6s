@@ -24,11 +24,19 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.get('/operators', operators.findAll);
+app.get('/operators/likes', operators.findTotalLikes);
+app.get('/operators/:side', operators.findSide);
+app.get('/operators/:force', operators.findForce);
 app.get('/operators/:id', operators.findOne);
+
 
 app.post('/operators', operators.addOperator);
 
-app.put('/operators/:id/vote', operators.incrementUpvotes);
+app.put('/operators/:id/likes', operators.incrementLikes);
+app.put('/operators/:id/name', operators.changeName);
+app.put('/operators/:id/side', operators.changeSide);
+app.put('/operators/:id/force', operators.changeForce);
+app.put('/operators/:id/gadget', operators.changeGadget);
 
 app.delete('/operators/:id', operators.deleteOperator);
 

@@ -1,4 +1,3 @@
-let operators = require('../models/operators');
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
@@ -25,16 +24,13 @@ router.findAll = (req, res) => {
     Operator.find(function (err, operators) {
         if (err)
             res.send(err);
-
         res.send(JSON.stringify(operators,null,5));
     });
-
 }
 
 router.findOne = (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
-
     Operator.find({"_id": req.params.id},function(err,operator){
         if (err)
             res.send({ message: 'Operator Not Found'});
@@ -43,6 +39,25 @@ router.findOne = (req, res) => {
     });
 }
 
+router.findSide = (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    Operator.find({"side": req.params.side},function(err,operator){
+        if (err)
+            res.send({ message: 'Operator Not Found'});
+        else
+            res.json(operator);
+    });
+}
+
+router.findForce = (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    Operator.find({"force": req.params.force},function(err,operator){
+        if (err)
+            res.send({ message: 'Operator Not Found'});
+        else
+            res.json(operator);
+    });
+}
 
 router.addOperator = (req, res) => {
 
@@ -63,20 +78,104 @@ router.addOperator = (req, res) => {
     });
 }
 
-router.incrementUpvotes = (req, res) => {
+router.incrementLikes = (req, res) => {
 
     Operator.findById(req.params.id, function(err,operator) {
         if (err)
             res.json({ message: 'Operator NOT Found!', errmsg : err });
         else {
-            operator.upvotes += 1;
+            operator.likes += 1;
             operator.save(function (err) {
                 if (err)
                     res.json(err);
                 else
-                    res.json('Vote incremented');
+                    res.json('Likes incremented');
             });
         }
+    });
+}
+
+router.changeName = (req, res) => {
+
+    Operator.findById(req.params.id, function (err, operator) {
+        if (err)
+            res.json({message: 'Operator Not Found'});
+        else {
+            operator.name = req.body.name;
+            operator.save(function (err) {
+                if(err)
+                    res.json(err);
+                else
+                    res.json('Name Updated');
+            });
+        }
+    });
+}
+
+router.changeSide = (req, res) => {
+
+    Operator.findById(req.params.id, function (err, operator) {
+        if (err)
+            res.json({message: 'Operator Not Found'});
+        else {
+            operator.side = req.body.side;
+            operator.save(function (err) {
+                if(err)
+                    res.json(err);
+                else
+                    res.json('Side Updated');
+            });
+        }
+    });
+}
+
+router.changeForce = (req, res) => {
+
+    Operator.findById(req.params.id, function (err, operator) {
+        if (err)
+            res.json({message: 'Operator Not Found'});
+        else {
+            operator.force = req.body.force;
+            operator.save(function (err) {
+                if(err)
+                    res.json(err);
+                else
+                    res.json('Forece Updated');
+            });
+        }
+    });
+}
+
+router.changeGadget = (req, res) => {
+
+    Operator.findById(req.params.id, function (err, operator) {
+        if (err)
+            res.json({message: 'Operator Not Found'});
+        else {
+            operator.gadget = req.body.gadget;
+            operator.save(function (err) {
+                if(err)
+                    res.json(err);
+                else
+                    res.json('Gadget Updated');
+            });
+        }
+    });
+}
+
+function getTotalLikes(array) {
+    let totalLikes = 0;
+    array.forEach(function(obj) { totalLikes += obj.likes; });
+    return totalLikes
+}
+
+router.findTotalLikes = (req, res) => {
+
+    Operator.find(function(err, operators) {
+        if (err)
+            res.send(err);
+        else
+            res.json({ totallikes : getTotalLikes(operators) });
     });
 }
 
@@ -88,11 +187,6 @@ router.deleteOperator =(req,res)=> {
         else
             res.send('Operator Deleted');
     });
-}
-
-function getByValue(array, name) {
-    var result  = array.filter(function(obj){return obj.name == name;} );
-    return result ? result[0] : null; // or undefined
 }
 
 module.exports = router;
