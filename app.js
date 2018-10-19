@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const operators = require("./routes/operators");
+const maps = require("./routes/maps");
 
 var app = express();
 
@@ -22,22 +23,31 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+//Operators Get
 app.get('/operators', operators.findAll);
 app.get('/operators/likes', operators.findTotalLikes);
 app.get('/operators/:side', operators.findSide);
 app.get('/operators/:force', operators.findForce);
 app.get('/operators/:id', operators.findOne);
-
-
+//Maps Get
+app.get('/maps', maps.findAll);
+app.get('/maps/:id', maps.findOne);
+app.get('maps/likes', maps.findTotalLikes);
+//Post Methods
 app.post('/operators', operators.addOperator);
+app.post('/maps', maps.addMap);
 
+//Operator Put
 app.put('/operators/:id/likes', operators.incrementLikes);
 app.put('/operators/:id/name', operators.changeName);
 app.put('/operators/:id/side', operators.changeSide);
 app.put('/operators/:id/force', operators.changeForce);
 app.put('/operators/:id/gadget', operators.changeGadget);
+//Maps Put
+app.put('/maps/:id/likes', maps.incrementLikes);
+app.put('/maps/updateMap/:id', maps.updateMap);
 
+app.delete('/maps/:id', maps.deleteMap);
 app.delete('/operators/:id', operators.deleteOperator);
 
 // catch 404 and forward to error handler
