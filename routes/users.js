@@ -42,7 +42,7 @@ router.post('/login', (req,res,next) => {
         .then( user => {
             if (user.length <1)
                 res.json({message: 'No users created yet :('});
-            
+
         })
 })
 
