@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 const operators = require("./routes/operators");
 const maps = require("./routes/maps");
 
+
 var app = express();
 
 // view engine setup
@@ -36,6 +37,7 @@ app.get('maps/likes', maps.findTotalLikes);
 //Post Methods
 app.post('/operators', operators.addOperator);
 app.post('/maps', maps.addMap);
+
 
 //Operator Put
 app.put('/operators/:id/likes', operators.incrementLikes);
