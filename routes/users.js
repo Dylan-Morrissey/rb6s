@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const User = require('../models/user');
 var mongodbUri ='mongodb://dylan:dylan123@ds125693.mlab.com:25693/rainbowsixdb';
 const jwt = require('jsonwebtoken');
+const checkAuth = require('./authentication/check-auth');
 
 mongoose.connect(mongodbUri, { useNewUrlParser: true});
 
@@ -59,8 +60,7 @@ router.post('/login', (req,res,next) => {
         });
 });
 
-
-router.delete('/:id/delete', (req,res)=> {
+router.delete('/:id/delete', checkAuth, (req,res)=> {
 
     User.findByIdAndRemove(req.params.id, function(err) {
         if (err)
@@ -70,9 +70,5 @@ router.delete('/:id/delete', (req,res)=> {
     });
 }
 );
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
 module.exports = router;

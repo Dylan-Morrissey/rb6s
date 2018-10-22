@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const operators = require("./routes/operators");
 const maps = require("./routes/maps");
+const checkAuth = require('./authentication/check-auth');
 
 
 var app = express();
@@ -36,22 +37,22 @@ app.get('/maps', maps.findAll);
 app.get('/maps/:id', maps.findOne);
 app.get('maps/likes', maps.findTotalLikes);
 //Post Methods
-app.post('/operators', operators.addOperator);
-app.post('/maps', maps.addMap);
+app.post('/operators', checkAuth, operators.addOperator);
+app.post('/maps', checkAuth, maps.addMap);
 
 
 //Operator Put
-app.put('/operators/:id/likes', operators.incrementLikes);
-app.put('/operators/:id/name', operators.changeName);
-app.put('/operators/:id/side', operators.changeSide);
-app.put('/operators/:id/force', operators.changeForce);
-app.put('/operators/:id/gadget', operators.changeGadget);
+app.put('/operators/:id/likes', checkAuth, operators.incrementLikes);
+app.put('/operators/:id/name',checkAuth,  operators.changeName);
+app.put('/operators/:id/side', checkAuth, operators.changeSide);
+app.put('/operators/:id/force', checkAuth, operators.changeForce);
+app.put('/operators/:id/gadget', checkAuth, operators.changeGadget);
 //Maps Put
-app.put('/maps/:id/likes', maps.incrementLikes);
-app.put('/maps/updateMap/:id', maps.updateMap);
+app.put('/maps/:id/likes', checkAuth, maps.incrementLikes);
+app.put('/maps/updateMap/:id', checkAuth, maps.updateMap);
 
-app.delete('/maps/:id', maps.deleteMap);
-app.delete('/operators/:id', operators.deleteOperator);
+app.delete('/maps/:id', checkAuth, maps.deleteMap);
+app.delete('/operators/:id', checkAuth, operators.deleteOperator);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
