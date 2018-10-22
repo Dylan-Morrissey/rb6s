@@ -3,6 +3,20 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require("mongoose");
 const User = require('../models/user');
+var mongodbUri ='mongodb://dylan:dylan123@ds125693.mlab.com:25693/rainbowsixdb';
+
+mongoose.connect(mongodbUri, { useNewUrlParser: true});
+
+let db = mongoose.connection;
+
+db.on('error', function (err) {
+    console.log('Unable to Connect to [ ' + db.name + ' ]', err);
+});
+
+db.once('open', function () {
+    console.log('Successfully Connected to [ ' + db.name + ' ]');
+});
+
 
 router.get ('/', (req, res) => {
     // Return a JSON representation of our list
@@ -13,15 +27,9 @@ router.get ('/', (req, res) => {
             res.send(err);
         res.send(JSON.stringify(users,null,5));
     });
-})
+});
 
 router.post('/signup', (req, res) => {
-    User.find({email: req.body.email}).then(
-        user => {
-            if (user) {
-                res.json({message: 'This account already exists'})
-            } else {
-
                 const user = new User();
                 user.name = req.body.name;
                 user.email = req.body.email;
@@ -33,18 +41,21 @@ router.post('/signup', (req, res) => {
                     else
                         res.json({message: 'Your account has been created!'});
                 });
-            }
-        })
 });
 
 router.post('/login', (req,res,next) => {
     User.find({email: req.body.email})
-        .then( user => {
-            if (user.length <1)
-                res.json({message: 'No users created yet :('});
+        .then(user => {
+            if (user.length < 1)
+                res.json({message: 'Wrong Email'});
+            if (req.body.password.toString() === user[0].password.toString()) {
+                return res.status(200).json({message: "Authenticated"});
+            } else {
+                res.json({message: "Wrong Password entered"})
+            }
+        });
+});
 
-        })
-})
 
 router.delete('/:id/delete', (req,res)=> {
 
