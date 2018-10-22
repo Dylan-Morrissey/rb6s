@@ -4,6 +4,7 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const User = require('../models/user');
 var mongodbUri ='mongodb://dylan:dylan123@ds125693.mlab.com:25693/rainbowsixdb';
+const jwt = require('jsonwebtoken');
 
 mongoose.connect(mongodbUri, { useNewUrlParser: true});
 
@@ -49,7 +50,9 @@ router.post('/login', (req,res,next) => {
             if (user.length < 1)
                 res.json({message: 'Wrong Email'});
             if (req.body.password.toString() === user[0].password.toString()) {
-                return res.status(200).json({message: "Authenticated"});
+                const token =jwt.sign({email: user[0].email, userId: user[0].id}, "securethisplease", {expiresIn: "1h"});
+                return res.status(200).json({message: "Authenticated", token :token});
+
             } else {
                 res.json({message: "Wrong Password entered"})
             }
