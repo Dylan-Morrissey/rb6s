@@ -1,5 +1,6 @@
 let mongoose = require('mongoose');
 
+//Schema for the Operators (playable characters in the game)
 let RainbowSixSchema = new mongoose.Schema({
         name: String,
         side: String,

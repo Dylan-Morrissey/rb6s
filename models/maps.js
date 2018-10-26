@@ -1,5 +1,6 @@
 let mongoose = require('mongoose');
 
+//Schema for Maps connected to mongodb
 let RainbowSixMapSchema = new mongoose.Schema({
         name: String,
         location: String,
@@ -10,6 +11,7 @@ let RainbowSixMapSchema = new mongoose.Schema({
         ranked: String,
         likes: {type: Number, default: 0}
     },
+    //adds to the maps collection on rainbow6db
     { collection: 'maps' });
 
 module.exports = mongoose.model('Map', RainbowSixMapSchema);

@@ -19,7 +19,7 @@ db.once('open', function () {
     console.log('Successfully Connected to [ ' + db.name + ' ]');
 });
 
-
+//Returns all users
 router.get ('/', (req, res) => {
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
@@ -31,6 +31,7 @@ router.get ('/', (req, res) => {
     });
 });
 
+//Method which you sign up to the web app
 router.post('/signup', (req, res) => {
                 const user = new User();
                 user.name = req.body.name;
@@ -45,6 +46,7 @@ router.post('/signup', (req, res) => {
                 });
 });
 
+//from using the account from singup you can log in and get access to more methods
 router.post('/login', (req,res,next) => {
     User.find({email: req.body.email})
         .then(user => {
@@ -60,6 +62,7 @@ router.post('/login', (req,res,next) => {
         });
 });
 
+//delete a user from there unique ID
 router.delete('/:id/delete', checkAuth, (req,res)=> {
 
     User.findByIdAndRemove(req.params.id, function(err) {

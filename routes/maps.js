@@ -8,15 +8,17 @@ var mongodbUri ='mongodb://dylan:dylan123@ds125693.mlab.com:25693/rainbowsixdb';
 mongoose.connect(mongodbUri, { useNewUrlParser: true});
 
 let db = mongoose.connection;
-
+//if it cannot connect to the db is print this error
 db.on('error', function (err) {
     console.log('Unable to Connect to [ ' + db.name + ' ]', err);
 });
 
+//if it connects to the db it lets us know
 db.once('open', function () {
     console.log('Successfully Connected to [ ' + db.name + ' ]');
 });
 
+//find all function which finds all the maps
 router.findAll = (req, res) => {
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
@@ -28,6 +30,7 @@ router.findAll = (req, res) => {
     });
 }
 
+//finds a single map specified by the user
 router.findOne = (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
@@ -39,6 +42,7 @@ router.findOne = (req, res) => {
     });
 }
 
+//allows logged in users to add a new map to the collection
 router.addMap = (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
@@ -61,6 +65,7 @@ router.addMap = (req, res) => {
     });
 }
 
+//allows the logged in users to change details about the map
 router.updateMap = (req, res) => {
 
     Map.findByIdAndUpdate(req.params.id, req.body, {new : true} , function (err, map) {
@@ -72,9 +77,8 @@ router.updateMap = (req, res) => {
     });
 }
 
-
+//Increases the likes a specified map has by 1
 router.incrementLikes = (req, res) => {
-
     Map.findById(req.params.id, function(err,map) {
         if (err)
             res.json({ message: 'Map NOT Found!', errmsg : err });
@@ -90,6 +94,7 @@ router.incrementLikes = (req, res) => {
     });
 }
 
+//Returns the total likes for all maps
 function getTotalLikes(array) {
     let totalLikes = 0;
     array.forEach(function(obj) { totalLikes += obj.likes; });
@@ -106,6 +111,7 @@ router.findTotalLikes = (req, res) => {
     });
 }
 
+//Deletes a specified map from the db
 router.deleteMap =(req,res)=> {
 
     Map.findByIdAndRemove(req.params.id, function(err) {

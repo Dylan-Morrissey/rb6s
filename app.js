@@ -36,7 +36,7 @@ app.get('/operators/:id', operators.findOne);
 app.get('/maps', maps.findAll);
 app.get('/maps/:id', maps.findOne);
 app.get('maps/likes', maps.findTotalLikes);
-//Post Methods
+//Post Methods CheckAuth check to see if the json webtoken is valid and if valid returns the details
 app.post('/operators', checkAuth, operators.addOperator);
 app.post('/maps', checkAuth, maps.addMap);
 

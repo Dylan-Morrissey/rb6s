@@ -17,6 +17,7 @@ db.once('open', function () {
     console.log('Successfully Connected to [ ' + db.name + ' ]');
 });
 
+//Returns a list of all operators
 router.findAll = (req, res) => {
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
@@ -28,6 +29,7 @@ router.findAll = (req, res) => {
     });
 }
 
+//returns and operator when searched by ID
 router.findOne = (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
@@ -39,6 +41,7 @@ router.findOne = (req, res) => {
     });
 }
 
+//returns all operators of a specific side (attacker or defender)
 router.findSide = (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     Operator.find({"side": req.params.side},function(err,operator){
@@ -49,6 +52,7 @@ router.findSide = (req, res) => {
     });
 }
 
+//returns the operator assigned to the force
 router.findForce = (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     Operator.find({"force": req.params.force},function(err,operator){
@@ -59,6 +63,7 @@ router.findForce = (req, res) => {
     });
 }
 
+//adds a new operator to the DB
 router.addOperator = (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
@@ -78,6 +83,7 @@ router.addOperator = (req, res) => {
     });
 }
 
+//increases the like an operator has by 1
 router.incrementLikes = (req, res) => {
 
     Operator.findById(req.params.id, function(err,operator) {
@@ -95,6 +101,7 @@ router.incrementLikes = (req, res) => {
     });
 }
 
+//change the name of an operator
 router.changeName = (req, res) => {
 
     Operator.findById(req.params.id, function (err, operator) {
@@ -112,6 +119,7 @@ router.changeName = (req, res) => {
     });
 }
 
+//change the side of an operator
 router.changeSide = (req, res) => {
 
     Operator.findById(req.params.id, function (err, operator) {
@@ -129,6 +137,7 @@ router.changeSide = (req, res) => {
     });
 }
 
+//change the force of an operator
 router.changeForce = (req, res) => {
 
     Operator.findById(req.params.id, function (err, operator) {
@@ -146,6 +155,7 @@ router.changeForce = (req, res) => {
     });
 }
 
+//change the operators gadget
 router.changeGadget = (req, res) => {
 
     Operator.findById(req.params.id, function (err, operator) {
@@ -169,6 +179,7 @@ function getTotalLikes(array) {
     return totalLikes
 }
 
+//Returs the total likes for all the operators
 router.findTotalLikes = (req, res) => {
 
     Operator.find(function(err, operators) {
@@ -179,6 +190,7 @@ router.findTotalLikes = (req, res) => {
     });
 }
 
+//Deletes an operator by IF
 router.deleteOperator =(req,res)=> {
 
     Operator.findByIdAndRemove(req.params.id, function(err) {
