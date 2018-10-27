@@ -31,13 +31,23 @@ router.findAll = (req, res) => {
 
 //returns and operator when searched by ID
 router.findOne = (req, res) => {
-
     res.setHeader('Content-Type', 'application/json');
-    Operator.find({"_id": req.params.id},function(err,operator){
+
+    Operator.find({ "_id" : req.params.id },function(err, operator) {
         if (err)
-            res.send({ message: 'Operator Not Found'});
+        res.send(err)
         else
-            res.json(operator);
+        res.send(JSON.stringify(operator,null,5));
+    });
+}
+
+router.findName = (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    Operator.find({"name": req.params.name},function(err,operator){
+        if (err)
+            res.send(err);
+        else
+            res.json(JSON.stringify(operator,null,5));
     });
 }
 
