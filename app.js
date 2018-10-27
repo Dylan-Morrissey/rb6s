@@ -5,8 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 const operators = require("./routes/operators");
 const maps = require("./routes/maps");
 const checkAuth = require('./authentication/check-auth');
@@ -29,12 +29,13 @@ app.use('/users', usersRouter);
 //Operators Get
 app.get('/operators', operators.findAll);
 app.get('/operators/likes', operators.findTotalLikes);
-app.get('/operators/:side', operators.findSide);
-app.get('/operators/:force', operators.findForce);
 app.get('/operators/:id', operators.findOne);
+app.get('/operators/side/:side', operators.findSide);
+app.get('/operators/name/:name', operators.findName);
+app.get('/operators/force/:force', operators.findForce);
 //Maps Get
 app.get('/maps', maps.findAll);
-app.get('/maps/:id', maps.findOne);
+app.get('/maps/:id', maps.findOneMap);
 app.get('maps/likes', maps.findTotalLikes);
 //Post Methods CheckAuth check to see if the json webtoken is valid and if valid returns the details
 app.post('/operators', checkAuth, operators.addOperator);
