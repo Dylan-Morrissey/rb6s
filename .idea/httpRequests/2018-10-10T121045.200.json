@@ -1,0 +1,26 @@
+[
+  {
+    "upvotes": 0,
+    "_id": "5bbdda84701ff46c685670e3",
+    "name": "Lesion",
+    "side": "Defender",
+    "force": "S.D.U",
+    "gadget": "Gu Mine"
+  },
+  {
+    "upvotes": 0,
+    "_id": "5bbddaa9701ff46c685670e4",
+    "name": "Mute",
+    "side": "Defender",
+    "force": "SAS",
+    "gadget": "Moni"
+  },
+  {
+    "upvotes": 0,
+    "_id": "5bbddac6701ff46c685670e5",
+    "name": "Smoke",
+    "side": "Defender",
+    "force": "SAS",
+    "gadget": "Compound Z8"
+  }
+]

@@ -1,0 +1,399 @@
+GET http://localhost:3000/operators/side/Defender
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T122712.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdff03cd99af384c6a40b0
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T122532.200.json
+
+###
+
+GET http://localhost:3000/operators/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T122524.200.json
+
+###
+
+GET http://localhost:3000/operators/Defender
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T122521.200.json
+
+###
+
+GET http://localhost:3000/operators/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T122515.200.json
+
+###
+
+GET http://localhost:3000/operators/Defender
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T122429.200.json
+
+###
+
+GET http://localhost:3000/operators/Defender
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T122330.200.json
+
+###
+
+GET http://localhost:3000/operators/Aliba
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T122305.200.json
+
+###
+
+GET http://localhost:3000/operators/Aliba
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T120221.200.json
+
+###
+
+GET http://localhost:3000/operators/Lesion
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T120214.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdff03cd99af384c6a40b0
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T115956.200.json
+
+###
+
+GET http://localhost:3000/operators
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114735.200.json
+
+###
+
+GET http://localhost:3000/operators/Attacker
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114730.200.json
+
+###
+
+GET http://localhost:3000/operators/Defender
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114720.200.json
+
+###
+
+GET http://localhost:3000/operators/GIGN
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114709.200.json
+
+###
+
+GET http://localhost:3000/operators/GING
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114707.200.json
+
+###
+
+GET http://localhost:3000/operators/Lesion
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114658.200.json
+
+###
+
+GET http://localhost:3000/maps
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114322.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdffbccd99af384c6a40b4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114227.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdffbccd99af384c6a40b4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114200-3.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdffbccd99af384c6a40b4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114200-2.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdffbccd99af384c6a40b4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114200-1.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdffbccd99af384c6a40b4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114200.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdffbccd99af384c6a40b4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114159-1.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdffbccd99af384c6a40b4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114159.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdffbccd99af384c6a40b4
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114158.200.json
+
+###
+
+GET http://localhost:3000/operators/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-27T114149.200.json
+
+###
+
+GET http://localhost:3000/operators/0
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-10T121056.200.json
+
+###
+
+GET http://localhost:3000/operators/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-10T121045.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdda84701ff46c685670e3
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-10T121040.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdda84701ff46c685670e3
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-10-10T121039.200.json
+
+###
+
+GET http://localhost:3000/operators/5bbdda84701ff46c685670e3
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-10T120956.200.json
+
+###
+
+GET http://localhost:3000/operators/dj
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123928.200.json
+
+###
+
+GET http://localhost:3000/operators/Lesion
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123921.200.json
+
+###
+
+GET http://localhost:3000/operators/Mute
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123911.200.json
+
+###
+
+GET http://localhost:3000/operators/Mute
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123847.500.json
+
+###
+
+GET http://localhost:3000/operators/Mute
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123800.200.json
+
+###
+
+GET http://localhost:3000/operators
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123748.200.json
+
+###
+
+GET http://localhost:3000/operators/Lesion
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123648-1.200.json
+
+###
+
+GET http://localhost:3000/operators/Lesion
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123648.200.json
+
+###
+
+GET http://localhost:3000/operators/lesion
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123638.200.json
+
+###
+
+GET http://localhost:3000/lesion
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123626.404.html
+
+###
+
+GET http://localhost:3000/operators
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123537.200.json
+
+###
+
+GET http://localhost:3000/operators
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123525.500.json
+
+###
+
+GET http://localhost:3000/operators
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123500.500.json
+
+###
+
+GET http://localhost:3000/
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-09T123438.200.html
+
+###
+

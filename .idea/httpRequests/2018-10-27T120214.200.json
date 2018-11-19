@@ -1,0 +1,8 @@
+{
+  "message": "Cast to ObjectId failed for value \"Lesion\" at path \"_id\" for model \"Operator\"",
+  "name": "CastError",
+  "stringValue": "\"Lesion\"",
+  "kind": "ObjectId",
+  "value": "Lesion",
+  "path": "_id"
+}

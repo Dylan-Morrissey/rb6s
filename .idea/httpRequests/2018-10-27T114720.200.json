@@ -1,0 +1,58 @@
+[
+  {
+    "likes": 3,
+    "_id": "5bbdff03cd99af384c6a40b0",
+    "upvotes": 5,
+    "name": "Lesion",
+    "side": "Defender",
+    "force": "S.D.U",
+    "gadget": "Gu Mine",
+    "__v": 0
+  },
+  {
+    "likes": 0,
+    "_id": "5bbe0031cd99af384c6a40b5",
+    "upvotes": 0,
+    "name": "Vigil",
+    "side": "Defender",
+    "force": "707TH SMB",
+    "gadget": "Electronic Rendering Cloak (ERC-7)",
+    "__v": 0
+  },
+  {
+    "likes": 9,
+    "_id": "5bbe27da9397aa0d4c6752be",
+    "name": "Tachanka",
+    "side": "Defender",
+    "force": "SPETSNAZ",
+    "gadget": "Mounted LMG",
+    "__v": 0
+  },
+  {
+    "likes": 0,
+    "_id": "5bd39d4e451bf6398823def1",
+    "name": "Aliba",
+    "side": "Defender",
+    "force": "G.I.S",
+    "gadget": "Prisma",
+    "__v": 0
+  },
+  {
+    "likes": 0,
+    "_id": "5bd39d60451bf6398823def2",
+    "name": "Aliba",
+    "side": "Defender",
+    "force": "G.I.S",
+    "gadget": "Prisma",
+    "__v": 0
+  },
+  {
+    "likes": 0,
+    "_id": "5bd39d83451bf6398823def3",
+    "name": "Aliba",
+    "side": "Defender",
+    "force": "G.I.S",
+    "gadget": "Prisma",
+    "__v": 0
+  }
+]
