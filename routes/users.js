@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const User = require('../models/user');
 var mongodbUri ='mongodb://dylan:dylan123@ds125693.mlab.com:25693/rainbowsixdb';
 const jwt = require('jsonwebtoken');
-const checkAuth = require('./authentication/check-auth');
+const checkAuth = require('../authentication/check-auth');
 
 mongoose.connect(mongodbUri, { useNewUrlParser: true});
 

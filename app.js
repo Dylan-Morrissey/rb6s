@@ -10,6 +10,7 @@ const usersRouter = require('./routes/users');
 const operators = require("./routes/operators");
 const maps = require("./routes/maps");
 const checkAuth = require('./authentication/check-auth');
+const  cors = require('cors');
 
 
 var app = express();
@@ -19,6 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -38,7 +40,7 @@ app.get('/maps', maps.findAll);
 app.get('/maps/:id', maps.findOneMap);
 app.get('maps/likes', maps.findTotalLikes);
 //Post Methods CheckAuth check to see if the json webtoken is valid and if valid returns the details
-app.post('/operators', checkAuth, operators.addOperator);
+app.post('/operators', operators.addOperator);
 app.post('/maps', checkAuth, maps.addMap);
 
 

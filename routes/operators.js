@@ -2,7 +2,7 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 var Operator = require('../models/operators');
-var mongodbUri ='mongodb://dylan:dylan123@ds125693.mlab.com:25693/rainbowsixdb';
+var mongodbUri ='mongodb://dylanm:dylan2010@ds151108.mlab.com:51108/heroku_mfb0cv6t';
 
 
 mongoose.connect(mongodbUri, { useNewUrlParser: true});
@@ -47,7 +47,7 @@ router.findName = (req, res) => {
         if (err)
             res.send(err);
         else
-            res.json(JSON.stringify(operator,null,5));
+            res.json(operator);
     });
 }
 

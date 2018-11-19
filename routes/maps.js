@@ -31,7 +31,7 @@ router.findAll = (req, res) => {
 }
 
 //finds a single map specified by the user
-router.findOne = (req, res) => {
+router.findOneMap = (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
     Map.find({"_id": req.params.id},function(err,map){
