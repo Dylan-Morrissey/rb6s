@@ -1,0 +1,32 @@
+[
+  {
+    "likes": 0,
+    "_id": "5bbdff34cd99af384c6a40b1",
+    "upvotes": 0,
+    "name": "Ying",
+    "side": "Attacker",
+    "force": "S.D.U",
+    "gadget": "Candela Device ",
+    "__v": 0
+  },
+  {
+    "likes": 0,
+    "_id": "5bbdff98cd99af384c6a40b3",
+    "upvotes": 0,
+    "name": "Lion",
+    "side": "Attacker",
+    "force": "GIGN",
+    "gadget": "EE-ONE-D ",
+    "__v": 0
+  },
+  {
+    "likes": 0,
+    "_id": "5bbdffbccd99af384c6a40b4",
+    "upvotes": 0,
+    "name": "Finka",
+    "side": "Attacker",
+    "force": "SPETSNAZ",
+    "gadget": "Nanobot Shot",
+    "__v": 0
+  }
+]

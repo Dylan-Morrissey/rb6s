@@ -1,0 +1,14 @@
+[
+  {
+    "maxplayers": 40,
+    "floors": 3,
+    "likes": 0,
+    "_id": "5bc9c86d4bdf2c1ee8a5f057",
+    "name": "Bank",
+    "location": "Los Angeles California",
+    "terrain": "Urban, Interior",
+    "modes": "All",
+    "ranked": "yes",
+    "__v": 0
+  }
+]
