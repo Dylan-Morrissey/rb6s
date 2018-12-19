@@ -61,6 +61,16 @@ router.findSide = (req, res) => {
             res.json(operator);
     });
 }
+router.updateOperator = (req, res) => {
+
+    Operator.findByIdAndUpdate(req.params.id, req.body, {new : true} , function (err, operator) {
+        if (err)
+            res.json({message: 'Map Not Found'});
+        else {
+            res.json({message: 'Map Updated'});
+        }
+    });
+}
 
 //returns the operator assigned to the force
 router.findForce = (req, res) => {

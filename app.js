@@ -9,7 +9,6 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const operators = require("./routes/operators");
 const maps = require("./routes/maps");
-const checkAuth = require('./authentication/check-auth');
 const  cors = require('cors');
 
 
@@ -41,21 +40,22 @@ app.get('/maps/:id', maps.findOneMap);
 app.get('maps/likes', maps.findTotalLikes);
 //Post Methods CheckAuth check to see if the json webtoken is valid and if valid returns the details
 app.post('/operators', operators.addOperator);
-app.post('/maps', checkAuth, maps.addMap);
+app.post('/maps', maps.addMap);
 
 
 //Operator Put
-app.put('/operators/:id/likes', checkAuth, operators.incrementLikes);
-app.put('/operators/:id/name',checkAuth,  operators.changeName);
-app.put('/operators/:id/side', checkAuth, operators.changeSide);
-app.put('/operators/:id/force', checkAuth, operators.changeForce);
-app.put('/operators/:id/gadget', checkAuth, operators.changeGadget);
+app.put('/operators/update/:id/', operators.updateOperator);
+app.put('/operators/:id/likes', operators.incrementLikes);
+app.put('/operators/:id/name',  operators.changeName);
+app.put('/operators/:id/side', operators.changeSide);
+app.put('/operators/:id/force', operators.changeForce);
+app.put('/operators/:id/gadget', operators.changeGadget);
 //Maps Put
-app.put('/maps/:id/likes', checkAuth, maps.incrementLikes);
-app.put('/maps/updateMap/:id', checkAuth, maps.updateMap);
+app.put('/maps/:id/likes', maps.incrementLikes);
+app.put('/maps/updateMap/:id', maps.updateMap);
 
-app.delete('/maps/:id', checkAuth, maps.deleteMap);
-app.delete('/operators/:id', checkAuth, operators.deleteOperator);
+app.delete('/maps/:id', maps.deleteMap);
+app.delete('/operators/:id', operators.deleteOperator);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
